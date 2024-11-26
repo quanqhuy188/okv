@@ -23,5 +23,5 @@ fe/*.njsproj
 fe/*.sln
 fe/*.sw?
 
-be/OKVIP/bin
-be/OKVIP/obj
+be/obj
+be/bin
