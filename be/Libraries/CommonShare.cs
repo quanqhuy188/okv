@@ -49,30 +49,30 @@ namespace OKVIP.Libraries
     public enum ErrorCode
     {
         [Description("Đã xảy ra lỗi")]
-        HasError = 500, // Internal Server Error
+        HasError = 500, 
 
         [Description("Không có lỗi")]
-        None = 200, // OK
+        None = 200, 
 
         [Description("Token đã hết hạn")]
-        System_TokenExpired = 401, // Unauthorized
+        System_TokenExpired = 401,
 
         [Description("Token không hợp lệ")]
-        System_TokenInvalid = 401, // Unauthorized
+        System_TokenInvalid = 401, 
 
         [Description("Token rỗng")]
-        System_TokenEmpty = 401, // Unauthorized
+        System_TokenEmpty = 401, 
 
         [Description("Đối tượng đã tồn tại")]
-        Common_Existed = 400, // Bad Request
+        Common_Existed = 400, 
 
         [Description("Không tìm thấy đối tượng")]
-        Common_NotFound = 404, // Not Found
+        Common_NotFound = 404, 
 
         [Description("Đối tượng đang được sử dụng")]
-        Common_InUse = 409, // Conflict
+        Common_InUse = 409, 
 
         [Description("Đối tượng không hợp lệ")]
-        Common_Invalid = 400 // Bad Request
+        Common_Invalid = 400 
     }
 }

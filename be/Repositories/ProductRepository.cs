@@ -6,7 +6,7 @@ namespace OKVIP.Repositories
     public interface IProductRepository
     {
         Task<Product> GetByIdAsync(string id);
-        Task<IEnumerable<Product>> GetAllAsync(); // Thêm phương thức lấy tất cả sản phẩm
+        Task<IEnumerable<Product>> GetAllAsync();
         Task AddAsync(Product prod);
         Task SaveAsync();
     }
@@ -27,7 +27,7 @@ namespace OKVIP.Repositories
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            // Trả về tất cả sản phẩm từ cơ sở dữ liệu
+            
             return await _context.Products.ToListAsync();
         }
 

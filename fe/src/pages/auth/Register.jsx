@@ -5,7 +5,7 @@ import { setAuth, register } from '../../slices/authSlice'
 
 import { useNavigate } from 'react-router-dom'
 const RegisterPage = () => {
-  const navigate = useNavigate() // Khởi tạo hook useNavigate
+  const navigate = useNavigate() 
   const [form] = Form.useForm()
   const dispatch = useDispatch()
 
@@ -39,12 +39,9 @@ const RegisterPage = () => {
           <Form.Item name='fullname' rules={[{ required: true, message: 'Please input your fullname!' }]}>
             <Input prefix={<UserOutlined />} placeholder='Fullname' />
           </Form.Item>
-          {/* Tên đăng ký */}
           <Form.Item name='username' rules={[{ required: true, message: 'Please input your username!' }]}>
             <Input prefix={<UserOutlined />} placeholder='Username' />
           </Form.Item>
-
-          {/* Mật khẩu */}
           <Form.Item
             name='password'
             rules={[
@@ -55,8 +52,6 @@ const RegisterPage = () => {
           >
             <Input.Password prefix={<LockOutlined />} placeholder='Password' />
           </Form.Item>
-
-          {/* Xác nhận mật khẩu */}
           <Form.Item
             name='confirmPassword'
             dependencies={['password']}
@@ -75,16 +70,12 @@ const RegisterPage = () => {
           >
             <Input.Password prefix={<LockOutlined />} placeholder='Confirm Password' />
           </Form.Item>
-
-          {/* Nút đăng ký */}
           <Form.Item>
             <Button type='primary' htmlType='submit' block>
               Register
             </Button>
           </Form.Item>
         </Form>
-
-        {/* Link đăng nhập */}
         <Row justify='end'>
           <Col>
             <Button onClick={handleClickRedirect}>Already have an account? Login</Button>

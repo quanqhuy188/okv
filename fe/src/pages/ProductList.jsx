@@ -86,7 +86,7 @@ const ProductList = () => {
       </Button>
       <Table dataSource={dataSource} columns={columns} />
 
-      {/* Modal thêm sản phẩm */}
+
       <Modal title='Thêm sản phẩm' visible={isModalOpen} onCancel={handleCancel} onOk={handleAddProduct}>
         <Form form={form} layout='vertical'>
           <Form.Item

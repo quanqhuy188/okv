@@ -7,27 +7,27 @@ const PrivateRoute = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Mô phỏng việc load dữ liệu từ localStorage hoặc Redux
+    
     const accessToken = localStorage.getItem('accessToken')
     if (accessToken) {
-      // Cập nhật trạng thái isAuth nếu có token
-      setLoading(false) // Xác định trạng thái đã được load xong
+
+      setLoading(false) 
     } else {
-      setLoading(false) // Không có accessToken thì cũng xác định load xong
+      setLoading(false) 
     }
   }, [])
 
-  // Trong thời gian loading, không render gì cả
+  
   if (loading) {
-    return null // Hoặc có thể trả về một spinner/loading component
+    return null 
   }
 
-  // Sau khi đã xác định được trạng thái, kiểm tra nếu isAuth là true
+ 
   if (!isAuth) {
     return <Navigate to='/login' replace />
   }
 
-  return <Outlet /> // Nếu đã đăng nhập, render các route con
+  return <Outlet /> 
 }
 
 export default PrivateRoute

@@ -25,24 +25,23 @@ namespace OKVIP.Controllers
 
             try
             {
-                // Đường dẫn lưu ảnh
+
                 var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
                 if (!Directory.Exists(uploadsFolder))
                 {
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                // Tên file duy nhất
+
                 var uniqueFileName = $"{Guid.NewGuid()}_{file.FileName.Replace(" ", "")}";
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                // Lưu file
+
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
 
-                // Trả về đường dẫn file
                 var fileUrl = $"/uploads/{uniqueFileName}";
                 return Ok(new { Success = true, FileUrl = fileUrl});
             }

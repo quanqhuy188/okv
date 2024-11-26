@@ -21,9 +21,9 @@ function App() {
     if (accessToken) {
       const decoded = jwtDecode(accessToken)
       console.log(decoded)
-      dispatch(setAuth(true)) // Cập nhật Redux
+      dispatch(setAuth(true)) 
     } else {
-      dispatch(setAuth(false)) // Cập nhật Redux
+      dispatch(setAuth(false))
     }
   }, [dispatch])
   return (
@@ -34,7 +34,7 @@ function App() {
           <Route path='/register' element={<RegisterPage />} />
         </Route>
 
-        {/* Bảo vệ toàn bộ Layout với PrivateRoute */}
+
         <Route element={<PrivateRoute />}>
           <Route path='/' element={<ProductList />} />
           <Route path='/product/:id' element={<Product />} />

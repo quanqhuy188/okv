@@ -14,7 +14,7 @@ const Product = () => {
     const payload = {
       id
     }
-    console.log('sdsd', id)
+
     dispatch(getById(payload))
   }, [dispatch, id])
 
@@ -33,7 +33,7 @@ const Product = () => {
       <p>
         <strong>Mô tả:</strong> {product?.description}
       </p>
-      {/* Hiển thị thêm các thông tin chi tiết khác nếu cần */}
+
       <CommentSection productId={id} />
     </div>
   )

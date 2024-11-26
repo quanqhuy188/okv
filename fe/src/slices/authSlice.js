@@ -29,9 +29,9 @@ export const login = createAsyncThunk('auth/login', async (data, { rejectWithVal
 
 const initialState = {
   data: null,
-  user: null, // Thông tin người dùng
-  accessToken: null, // Access token
-  refreshToken: null, // Refresh token
+  user: null, 
+  accessToken: null,
+  refreshToken: null, 
   isAuth: null
 }
 
@@ -39,7 +39,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // Action để lưu thông tin người dùng và token khi đăng nhập thành công
+    
     setAuth: (state, action) => {
       state.isAuth = action.payload
     }
@@ -71,8 +71,7 @@ const authSlice = createSlice({
   }
 })
 
-// Export các action
+
 export const { setAuth } = authSlice.actions
 
-// Export reducer để sử dụng trong store
 export default authSlice.reducer

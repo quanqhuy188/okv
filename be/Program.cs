@@ -50,7 +50,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")  // Thay thế với domain frontend của bạn
+        policy.WithOrigins("http://localhost:5173") 
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
@@ -59,14 +59,14 @@ builder.Services.AddCors(options =>
 
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 104857600; // 100MB
+    options.MultipartBodyLengthLimit = 104857600;
 });
 
 var app = builder.Build();
 app.UseCors("AllowSpecificOrigin");
 DatabaseInitializer.CreateDatabase();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -32,7 +32,7 @@ namespace OKVIP.Services
         {
             var response = new ObjectReturnCode<AuthResponse>();
 
-            // Giả sử kiểm tra tên người dùng
+     
             var existingUser =  await _userRepository.GetByUsernameAsync(model.Username);
             if (existingUser != null)
             {
@@ -41,7 +41,7 @@ namespace OKVIP.Services
                 return response;
             }
             var hashedPassword = _authService.HashPassword(model.Password);
-            // Tạo user mới
+         
             var user = new User
             {
                 Id = Guid.NewGuid().ToString(),
@@ -50,11 +50,11 @@ namespace OKVIP.Services
                 Fullname = model.Fullname
             };
 
-            // Lưu người dùng vào cơ sở dữ liệu
+         
             _userRepository.AddAsync(user);
             _userRepository.SaveAsync();
 
-            // Tạo AccessToken và RefreshToken
+        
             var accessToken = _authService.GenerateAccessToken(user.Id);
             var refreshToken = _authService.GenerateRefreshToken(user.Id);
 
@@ -90,14 +90,14 @@ namespace OKVIP.Services
             var verifyPassword = _authService.VerifyPassword(model.Password, existingUser.Password);
             if (!verifyPassword)
             {
-                response.Code = ErrorCode.Common_Invalid;  // Sử dụng mã lỗi cho lỗi mật khẩu không hợp lệ
+                response.Code = ErrorCode.Common_Invalid;  
                 response.Description = "Sai mật khẩu.";
                 return response;
                 
             }
 
 
-            // Tạo AccessToken và RefreshToken
+      
             var accessToken = _authService.GenerateAccessToken(existingUser.Id);
             var refreshToken = _authService.GenerateRefreshToken(existingUser.Id);
 
@@ -177,7 +177,7 @@ namespace OKVIP.Services
             return await _userRepository.GetByIdAsync(userId);
         }
 
-        // Thêm các phương thức khác như UpdateUser, DeleteUser nếu cần
+      
     }
 
 }

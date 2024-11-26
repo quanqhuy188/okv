@@ -8,7 +8,7 @@ const CommentSection = ({ productId }) => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    // Tạo kết nối đến SignalR Hub
+
     const newConnection = new HubConnectionBuilder()
       .withUrl(`${import.meta.env.VITE_PUBLIC_API_ENDPOINT_URL}commentHub`)
       .build()

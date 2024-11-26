@@ -9,11 +9,11 @@ const axiosClient = axios.create({
   }
 })
 
-// Biến quản lý trạng thái refresh token
+
 let isRefreshing = false
 let failedQueue = []
 
-// Hàm xử lý lại hàng đợi request khi refresh token thành công
+
 const processQueue = (error, token = null) => {
   failedQueue.forEach((prom) => {
     if (error) {
@@ -25,7 +25,7 @@ const processQueue = (error, token = null) => {
   failedQueue = []
 }
 
-// Thông báo lỗi với Ant Design notification
+
 const showErrorNotification = (message, description) => {
   notification.error({
     message,
@@ -34,7 +34,7 @@ const showErrorNotification = (message, description) => {
   })
 }
 
-// Add a request interceptor
+
 axiosClient.interceptors.request.use(
   (config) => {
     if (config.requiresAuth) {
@@ -71,7 +71,7 @@ axiosClient.interceptors.response.use(
           originalRequest._retry = true
 
           try {
-            // Gửi yêu cầu làm mới token
+          
             const refreshResponse = await axios.post(
               `${import.meta.env.VITE_PUBLIC_API_ENDPOINT_URL}api/auth/refresh-token`,
               { refreshToken }
@@ -79,10 +79,8 @@ axiosClient.interceptors.response.use(
             const newAccessToken = refreshResponse.data.accessToken
             setAccessTokenToLocalStorage(newAccessToken)
 
-            // Xử lý hàng đợi request chờ làm mới token
             processQueue(null, newAccessToken)
 
-            // Cập nhật token vào headers
             originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
             return axiosClient(originalRequest)
           } catch (refreshError) {
@@ -98,7 +96,7 @@ axiosClient.interceptors.response.use(
           }
         }
 
-        // Đưa request vào hàng đợi nếu đang làm mới token
+      
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject })
         })
@@ -115,7 +113,7 @@ axiosClient.interceptors.response.use(
       }
     }
 
-    // Hiển thị thông báo lỗi từ backend
+
     if (error.response) {
       const { status, data } = error.response
       showErrorNotification(`Error ${status}`, data?.message || 'An unexpected error occurred')
@@ -128,7 +126,7 @@ axiosClient.interceptors.response.use(
       })
     }
 
-    // Xử lý lỗi mạng hoặc lỗi không xác định
+
     showErrorNotification('Network Error', 'Unable to connect to the server. Please try again later.')
 
     return Promise.reject({

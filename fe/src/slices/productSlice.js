@@ -83,7 +83,5 @@ const productSlice = createSlice({
   }
 })
 
-// Export các action
 
-// Export reducer để sử dụng trong store
 export default productSlice.reducer

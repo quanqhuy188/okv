@@ -6,10 +6,10 @@ namespace OKVIP.Services
     {
         public static void CreateDatabase()
         {
-            // Đường dẫn tới file SQLite
+      
             var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "okvip.db");
 
-            // Kiểm tra nếu database chưa tồn tại
+     
             if (!File.Exists(dbPath))
             {
                 using (var connection = new SqliteConnection($"Data Source={dbPath}"))
